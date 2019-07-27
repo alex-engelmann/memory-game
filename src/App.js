@@ -98,11 +98,6 @@ class App extends Component {
 
   };
 
-  changeScore = (currentScore) => {
-    currentScore++;
-    this.setState({ currentScore: currentScore })
-  };
-
   removeTravel = id => {
     this.setState({
       TravelCard: this.state.travel.map((TravelCard) => {
@@ -115,6 +110,7 @@ class App extends Component {
         return TravelCard;
       })
     });
+    this.setState({currentScore: this.state.currentScore + 1})
   };
 
 
@@ -122,8 +118,9 @@ class App extends Component {
     return (
       <Wrapper>
         <Title>Travel Destinations</Title>
-        <Description>Below are 12 lithographs made by a Swiss travel agency in the late 19th century.
-          Choose each destination only once, and try to get a perfect score of 12. <br></br>
+        <Description>Below are 12 images made by a Swiss travel agency in the late 19th century.
+          Learn more <a href="https://www.loc.gov/collections/photochrom-prints/about-this-collection/">here</a>
+          .  Travel to each destination only once, using the suitcase icon, and try to get a perfect score of 12. <br></br>
           Current Score: {this.state.currentScore}</Description>
         {this.state.travel.map(travel => (
           <TravelCard
