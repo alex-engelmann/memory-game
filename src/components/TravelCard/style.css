@@ -13,16 +13,16 @@
   height: 70%;
   overflow: hidden;
   text-align: center;
-  background:#6CADDC;
+  /* background:#6CADDC; */
 }
 .card > .img-container > img {
-  width: 80%
+  width: 100%
 }
 
 .card > .content {
   padding-left: 1rem;
   padding-right: 1rem;
-  font-size: 15px;
+  font-size: 13px;
 }
 
 .card > .content > ul {
@@ -34,10 +34,10 @@
 }
 
 .card > .remove {
-  color: #ff1744;
-  font-size: 48px;
+  color: grey;
+  font-size: 35px;
   position: absolute;
-  top: -20px;
+  bottom: 5px;
   right: 5px;
   cursor: pointer;
 }

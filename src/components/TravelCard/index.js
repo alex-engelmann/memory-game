@@ -18,7 +18,7 @@ function TravelCard(props) {
         </ul>
       </div>
       <span onClick={() => props.removeTravel(props.id)} className="remove">
-        𝘅
+      <i class="fas fa-suitcase"></i>
       </span>
     </div>
   );
