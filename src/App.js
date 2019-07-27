@@ -95,23 +95,36 @@ class App extends Component {
         "location": "Vienna, Austria"
       }
     ]
-    
+
+  };
+
+  changeScore = (currentScore) => {
+    currentScore++;
+    this.setState({ currentScore: currentScore })
   };
 
   removeTravel = id => {
-    // Filter this.state.travel for travel with an id not equal to the id being removed
-    const travel = this.state.travel.filter(travel => travel.id !== id);
-    // Set this.state.travel equal to the new travel array
-    this.setState({ travel });
+    this.setState({
+      TravelCard: this.state.travel.map((TravelCard) => {
+        if (TravelCard.id === id) {
+          if (TravelCard.chosen === true) {
+            alert("you lose!")
+          }
+          TravelCard.chosen = true
+        }
+        return TravelCard;
+      })
+    });
   };
 
-  // Map over this.state.travel and render a TravelCard component for each travel object
+
   render() {
     return (
       <Wrapper>
         <Title>Travel Destinations</Title>
         <Description>Below are 12 lithographs made by a Swiss travel agency in the late 19th century.
-            Choose each destination only once, and try to get a perfect score of 12</Description>
+          Choose each destination only once, and try to get a perfect score of 12. <br></br>
+          Current Score: {this.state.currentScore}</Description>
         {this.state.travel.map(travel => (
           <TravelCard
             removeTravel={this.removeTravel}
