@@ -98,19 +98,34 @@ class App extends Component {
 
   };
 
+  shuffleArray = (array) => {
+    let i = array.length - 1;
+    for (; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const temp = array[i];
+      array[i] = array[j];
+      array[j] = temp;
+    }
+    return array;
+  }
+
   removeTravel = id => {
     this.setState({
       TravelCard: this.state.travel.map((TravelCard) => {
         if (TravelCard.id === id) {
           if (TravelCard.chosen === true) {
-            alert("you lose!")
+            alert("you lose!");
+            window.location.reload();
           }
-          TravelCard.chosen = true
+          else {
+            TravelCard.chosen = true;
+            this.setState({ currentScore: this.state.currentScore + 1 });
+          }
         }
         return TravelCard;
       })
     });
-    this.setState({currentScore: this.state.currentScore + 1})
+    this.shuffleArray(this.state.travel);
   };
 
 
