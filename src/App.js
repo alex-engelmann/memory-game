@@ -114,7 +114,7 @@ class App extends Component {
       TravelCard: this.state.travel.map((TravelCard) => {
         if (TravelCard.id === id) {
           if (TravelCard.chosen === true) {
-            alert("you lose!");
+            alert("Try again!");
             window.location.reload();
           }
           else {
