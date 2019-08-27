@@ -137,17 +137,19 @@ class App extends Component {
           Learn more <a href="https://www.loc.gov/collections/photochrom-prints/about-this-collection/">here</a>
           .  Travel to each destination only once, using the suitcase icon, and try to get a perfect score of 12. <br></br>
           Current Score: {this.state.currentScore}</Description>
-        {this.state.travel.map(travel => (
-          <TravelCard
-            removeTravel={this.removeTravel}
-            id={travel.id}
-            key={travel.id}
-            name={travel.name}
-            image={travel.image}
-            chosen={travel.chosen}
-            location={travel.location}
-          />
-        ))}
+        <div className="container">
+          {this.state.travel.map(travel => (
+            <TravelCard
+              removeTravel={this.removeTravel}
+              id={travel.id}
+              key={travel.id}
+              name={travel.name}
+              image={travel.image}
+              chosen={travel.chosen}
+              location={travel.location}
+            />
+          ))}
+        </div>
       </Wrapper>
     );
   }
