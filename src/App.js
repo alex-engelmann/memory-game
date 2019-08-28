@@ -11,7 +11,6 @@ class App extends Component {
   state = {
     currentScore: 0,
     travel: travel
-
   };
 
   shuffleArray = (array) => {
