@@ -34,12 +34,14 @@ class App extends Component {
           }
           else {
             TravelCard.chosen = true;
-            this.setState({ currentScore: this.state.currentScore + 1 });
-            //TODO this conditional isn't running, likely due to async issue
-            if (this.state.currentScore === 12){
-              alert("You won!");
-              window.location.reload();
-            }
+            this.setState({ currentScore: this.state.currentScore + 1 }, () => {
+              if (this.state.currentScore === 12){
+                alert("You won!");
+                window.location.reload();
+              }     
+            }       
+              );
+           
           }
         }
         return TravelCard;
