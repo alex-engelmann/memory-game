@@ -5,7 +5,6 @@ import Title from "./components/Title";
 import Description from "./components/Description";
 import travel from "./travel.json";
 
-
 class App extends Component {
   // Setting this.state.travel to the travel destinations array
   state = {
@@ -13,7 +12,7 @@ class App extends Component {
     travel: travel
   };
 
-  shuffleArray = (array) => {
+  shuffleArray = array => {
     let i = array.length - 1;
     for (; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -22,26 +21,23 @@ class App extends Component {
       array[j] = temp;
     }
     return array;
-  }
+  };
 
   removeTravel = id => {
     this.setState({
-      TravelCard: this.state.travel.map((TravelCard) => {
+      TravelCard: this.state.travel.map(TravelCard => {
         if (TravelCard.id === id) {
           if (TravelCard.chosen === true) {
             alert("Play again!");
             window.location.reload();
-          }
-          else {
+          } else {
             TravelCard.chosen = true;
             this.setState({ currentScore: this.state.currentScore + 1 }, () => {
-              if (this.state.currentScore === 12){
+              if (this.state.currentScore === 12) {
                 alert("You won!");
                 window.location.reload();
-              }     
-            }       
-              );
-           
+              }
+            });
           }
         }
         return TravelCard;
@@ -50,15 +46,20 @@ class App extends Component {
     this.shuffleArray(this.state.travel);
   };
 
-
   render() {
     return (
       <Wrapper>
         <Title>Travel Destinations</Title>
-        <Description>Below are 12 images made by a Swiss travel agency in the late 19th century.
-          Learn more <a href="https://www.loc.gov/collections/photochrom-prints/about-this-collection/">here</a>
-          .  Travel to each destination only once, using the suitcase icon, and try to get a perfect score. <br></br>
-          Current Score: {this.state.currentScore}/12</Description>
+        <Description>
+          Below are 12 images made by a Swiss travel agency in the late 19th
+          century. Learn more{" "}
+          <a href="https://www.loc.gov/collections/photochrom-prints/about-this-collection/">
+            here
+          </a>
+          . Travel to each destination only once, using the suitcase icon, and
+          try to get a perfect score. <br></br>
+          Current Score: {this.state.currentScore}/12
+        </Description>
         <div className="container">
           {this.state.travel.map(travel => (
             <TravelCard
